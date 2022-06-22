@@ -11,7 +11,15 @@ public class ArrayDefinitionTest {
     public void printArraysSize() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        String expected = "10\n100500\n40\n";
+        String expected = """
+                10
+                100500
+                40
+                Petr
+                Ivan
+                Max
+                Steve
+                """;
         ArrayDefinition.main(null);
         Assert.assertEquals(expected, out.toString());
     }
