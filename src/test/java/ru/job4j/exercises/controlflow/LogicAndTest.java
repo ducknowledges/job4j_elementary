@@ -6,17 +6,17 @@ import static org.junit.Assert.*;
 
 public class LogicAndTest {
     @Test
-    public void whenNotEvenAndNegative() {
+    public void whenNotEvenAndNegativeThenFalse() {
         assertFalse(LogicAnd.check(-1));
     }
 
     @Test
-    public void whenNotEvenAndPositive() {
+    public void whenNotEvenAndPositiveThenFalse() {
         assertFalse(LogicAnd.check(1));
     }
 
     @Test
-    public void whenEvenAndPositive() {
+    public void whenEvenAndPositiveThenTrue() {
         assertTrue(LogicAnd.check(2));
     }
 }
