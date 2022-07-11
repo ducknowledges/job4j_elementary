@@ -8,28 +8,31 @@ import java.util.StringJoiner;
 
 import static org.junit.Assert.assertEquals;
 
-public class Print0ToNTest {
+public class PrintNToMTest {
 
     @Test
-    public void when3Then012() {
+    public void when2to4Then23() {
         var out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        Print0ToN.out(3);
+        PrintNToM.out(2, 4);
         var expect = new StringJoiner(
                 System.lineSeparator(),
                 "",
                 System.lineSeparator()
-        ).add("0").add("1").add("2").toString();
+        ).add("2").add("3").toString();
         assertEquals(out.toString(), expect);
     }
 
     @Test
-    public void when3Then01() {
+    public void when1to3Then12() {
         var out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        Print0ToN.out(2);
-        var expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add("0").add("1").toString();
+        PrintNToM.out(1, 3);
+        var expect = new StringJoiner(
+                System.lineSeparator(),
+                "",
+                System.lineSeparator()
+        ).add("1").add("2").toString();
         assertEquals(out.toString(), expect);
     }
 }
