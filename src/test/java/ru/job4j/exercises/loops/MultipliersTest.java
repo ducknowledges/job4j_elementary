@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.StringJoiner;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,8 +15,8 @@ public class MultipliersTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         Multipliers.out(1);
-        String ln = System.lineSeparator();
-        assertEquals(out.toString(), "1" + ln);
+        String expect = "1" + System.lineSeparator();
+        assertEquals(out.toString(), expect);
     }
 
     @Test
@@ -23,11 +24,11 @@ public class MultipliersTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         Multipliers.out(2);
-        String ln = System.lineSeparator();
-        assertEquals(out.toString(),
-                "1" + ln +
-                       "2" + ln
-        );
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("1")
+                .add("2")
+                .toString();
+        assertEquals(out.toString(), expect);
     }
 
     @Test
@@ -35,13 +36,13 @@ public class MultipliersTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         Multipliers.out(6);
-        String ln = System.lineSeparator();
-        assertEquals(out.toString(),
-                "1" + ln +
-                       "2" + ln +
-                       "3" + ln +
-                       "6" + ln
-        );
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("1")
+                .add("2")
+                .add("3")
+                .add("6")
+                .toString();
+        assertEquals(out.toString(), expect);
     }
 
 }

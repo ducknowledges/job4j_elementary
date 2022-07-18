@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.StringJoiner;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,13 +15,12 @@ public class BackwardForTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         BackwardFor.out(5, 1);
-        String ln = System.lineSeparator();
-        assertEquals(out.toString(),
-                "5" + ln +
-                       "4" + ln +
-                       "3" + ln +
-                       "2" + ln
-        );
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("5")
+                .add("4")
+                .add("3")
+                .add("2")
+                .toString();
+        assertEquals(out.toString(), expect);
     }
-
 }

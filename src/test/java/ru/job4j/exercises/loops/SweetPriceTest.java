@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.StringJoiner;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,13 +15,13 @@ public class SweetPriceTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         SweetPrice.out(10);
-        String ln = System.lineSeparator();
-        assertEquals(out.toString(),
-                "10" + ln +
-                       "20" + ln +
-                       "30" + ln +
-                       "40" + ln +
-                       "50" + ln
-        );
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("10")
+                .add("20")
+                .add("30")
+                .add("40")
+                .add("50")
+                .toString();
+        assertEquals(out.toString(), expect);
     }
 }
